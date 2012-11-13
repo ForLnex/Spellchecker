@@ -35,6 +35,12 @@ public class HLDictionary extends HashMap<HLKey, LLStringList>{
 			super.put(key, new LLStringList(key, value));
 	}
 
+	public boolean containsValue(String value){
+		HLKey key = new HLKey(value);
+
+		return containsValue(key, value);
+	}
+
 	public boolean containsValue(HLKey key, String value){
 		return (containsKey(key) && get(key).contains(value));
 	}

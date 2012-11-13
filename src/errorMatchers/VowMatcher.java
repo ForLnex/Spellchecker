@@ -69,11 +69,11 @@ public class VowMatcher implements MatcherInterface{
 	public boolean notAdjacent(char temp){
 		boolean notAdjacent = true;
 
-		if (index < str.length() - 1)
-			notAdjacent = str.charAt(index + 1) != temp;
+		if (index + 1 < str.length())
+			notAdjacent = str.charAt(index + 1) != temp && str.charAt(index + 1) != match;
 
 		if (index != 0)
-			notAdjacent = notAdjacent && str.charAt(index - 1) != temp;
+			notAdjacent = notAdjacent && str.charAt(index - 1) != temp && str.charAt(index - 1) != match;
 
 		return notAdjacent;
 	}

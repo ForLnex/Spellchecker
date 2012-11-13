@@ -3,16 +3,19 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
+import dataStructures.HLDictionary;
 import errorMatchers.VowMatcher;
 
 public class ErrorGenerator{
-	private final File	wordList;
-	private final int		numEntries;
-	private Random			generator;
+	private final File			wordList;
+	private final int				numEntries;
+	private final HLDictionary	dictionary;
+	private Random					generator;
 
-	public ErrorGenerator(File wordList, int numEntries){
-		this.wordList = wordList;
-		this.numEntries = numEntries;
+	public ErrorGenerator(HLDictionary dictionary){
+		this.wordList = dictionary.DICTIONARYFILE;
+		this.numEntries = dictionary.numEntries;
+		this.dictionary = dictionary;
 		generator = new Random();
 	}
 
@@ -20,7 +23,7 @@ public class ErrorGenerator{
 		String[] temp;
 		do
 			temp = EG(new ObfWord(getWord()));
-		while (temp[0].equals(temp[1]));
+		while (temp[0].equals(temp[1]) || dictionary.containsValue(temp[1]));
 		return temp;
 	}
 

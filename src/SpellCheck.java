@@ -76,7 +76,7 @@ public class SpellCheck{
 		boolean verbose = false;
 
 		corrections = failures = 0;
-		eg = new ErrorGenerator(dictionary.DICTIONARYFILE, dictionary.numEntries);
+		eg = new ErrorGenerator(dictionary);
 
 		if (command.length >= 2)
 			try{
@@ -109,13 +109,6 @@ public class SpellCheck{
 			failuresList += ">" + word[0] + " was changed to " + word[1] + ".\n";
 		}else
 			++corrections;
-		/*
-		 * if
-		 * (sc.spellCheck(eg.errorGen()[1]).equals("NO SUGGESTION"
-		 * )){ ++failures;
-		 * 
-		 * } else ++corrections;
-		 */
 	}
 
 	public static void genErrorV(){
